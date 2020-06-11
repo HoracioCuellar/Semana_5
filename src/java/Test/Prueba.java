@@ -9,8 +9,11 @@ public class Prueba {
 
     public static void main(String[] args) {
         Prueba evaluar = new Prueba();
-//        evaluar.listarCategorias();
-        evaluar.editarCategorias();
+      //evaluar.listarCategorias();
+      // evaluar.editarCategorias();
+      // evaluar.guardarCategoria();
+      evaluar.listarCategorias();
+     // evaluar.eliminar();
     }
 
     public void listarCategorias() {
@@ -31,5 +34,17 @@ public class Prueba {
         System.out.println("ID: " + cat.getId_categoria()
                 + " NOMBRE " + cat.getNombre()
                 + " ESTADO: " + cat.getEstado_categoria());
+    }
+    public void guardarCategoria(){
+        CategoriaDAO categoria = new CategoriaDAOImplementar();
+        Categoria guardar_cat=new Categoria();
+        guardar_cat.setNombre("Bebidas Naturales");
+        guardar_cat.setId_categoria(5);
+        guardar_cat.setEstado_categoria(1);
+        categoria.guardarCat(guardar_cat);
+    }
+    public void eliminar(){
+    CategoriaDAO categoria=new CategoriaDAOImplementar();
+    categoria.eliminarCat(2);
     }
 }

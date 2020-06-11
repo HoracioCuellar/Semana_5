@@ -53,12 +53,45 @@ public class CategoriaDAOImplementar implements CategoriaDAO {
 
     @Override
     public boolean guardarCat(Categoria categoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySql);
+        boolean guardar = false;
+        try {
+            if (categoria.getId_categoria() == 0) {
+                StringBuilder miSQL = new StringBuilder();
+                miSQL.append("insert into tb_categoria (nom_categoria,estado_categoria) values ('"
+                        + categoria.getNombre() + " ' ,'" + categoria.estado_categoria + " ' );");
+                this.conn.ejecutarSQL(miSQL.toString());
+            } else if (categoria.getId_categoria() > 0) {
+                StringBuilder miSQL = new StringBuilder();
+                miSQL.append("UPDATE tb_categoria set id_categoria = ").append(categoria.getId_categoria());
+                miSQL.append(", nom_categoria = ' ").append(categoria.getNombre());
+                miSQL.append("  ', estado_categoria = ").append(categoria.getEstado_categoria());
+                miSQL.append(" WHERE id_categoria = ").append(categoria.getId_categoria()).append(";");
+                this.conn.ejecutarSQL(miSQL.toString());
+            }
+            guardar = true;
+        } catch (Exception e) {
+
+        } finally {
+            this.conn.cerrarConexion();
+        }
+        return guardar;
     }
 
     @Override
     public boolean eliminarCat(int id_cant_borrar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySql);
+        boolean borra = false;
+        try {
+            StringBuilder miSQL = new StringBuilder();
+            miSQL.append("DELETE FROM tb_categoria where id_categoria = ").append(id_cant_borrar);
+            this.conn.ejecutarSQL(miSQL.toString());
+            borra = true;
+        } catch (Exception e) {
+        } finally {
+            this.conn.cerrarConexion();
+        }
+        return borra;
     }
 
     @Override

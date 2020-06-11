@@ -1,17 +1,15 @@
-<%-- 
-    Document   : index
-    Created on : 06-10-2020, 11:27:14 AM
-    Author     : Giovanni
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Control de inventario</title>
+        <%@include file="WEB-INF/Vistas-Parciales/css-js.jspf"%>
     </head>
     <body>
-        <h1>Hola desde Windows 10</h1>
+        <%@include file="WEB-INF/Vistas-Parciales/encabezado.jspf"%>
+        <h3>!Bienvenid@!</h3>
+        
+        <%@include file="WEB-INF/Vistas-Parciales/pie.jspf"%>
     </body>
 </html>
